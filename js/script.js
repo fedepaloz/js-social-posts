@@ -36,7 +36,8 @@ const socialPosts = [
         likes: 2000
 
 
-    }, {
+    }, 
+    {
         id: 3,
         name: 'Giorgio Savo',
         picture: "https://i.picsum.photos/id/324/200/200.jpg?hmac=qhw4ORwk8T1r-Rxd2QREZORSVvc6l_R1S6F3Pl9mR_c",
@@ -44,7 +45,8 @@ const socialPosts = [
         likes: 20
 
 
-    }, {
+    }, 
+    {
         id: 4,
         name: 'Luca Murri',
         picture: "https://i.picsum.photos/id/60/200/200.jpg?hmac=MjMlhHlJlU_z3Z1DXohWUex2M-Gs7dtbqv4EJ4pSg3E",
@@ -52,10 +54,11 @@ const socialPosts = [
         likes: 34
 
 
-    }, {
+    }, 
+    {
         id: 5,
         name: 'Marcel Proust',
-        picture: "https://i.picsum.photos/id/330/200/200.jpg?hmac=Qo-hwVGhetTRMtlg4NE-HSzGQmvEC4vPxFFp3foXOHM",
+        picture: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Marcel_Proust_1895.jpg/1200px-Marcel_Proust_1895.jpg",
         data: "200 anni fa",
         likes: 43
 
@@ -65,3 +68,52 @@ const socialPosts = [
 ]
 
 console.table(socialPosts)
+
+//recupero l elemento dal dom dove montare tutto
+const cardsContainer = document.getElementById('container')
+
+
+let cards = ''
+
+
+for (let i = 0 ; i < socialPosts.length ; i++)
+{
+   const posts = socialPosts[i]
+
+    cards += 
+    `<div class="post">
+        <div class="post__header">
+          <div class="post-meta">
+            <div class="post-meta__icon">
+              <img class="profile-pic" src="${posts.picture}" alt="${posts.name}" />
+            </div>
+            <div class="post-meta__data">
+              <div class="post-meta__author">${posts.name}</div>
+              <div class="post-meta__time">${posts.data}</div>
+            </div>
+          </div>
+        </div>
+        <div class="post__text">
+          Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint
+          voluptate recusandae architecto. Et nihil ullam aut alias.
+        </div>
+        <div class="post__image">
+          <img src="${posts.picture}" alt="" />
+        </div>
+        <div class="post__footer">
+          <div class="likes js-likes">
+            <div class="likes__cta">
+              <a class="like-button js-like-button" href="#" data-postid="1">
+                <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                <span class="like-button__label">${posts.likes} Mi Piace</span>
+              </a>
+            </div>
+            <div class="likes__counter">Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone</div>
+          </div>
+        </div>
+      </div>`
+}
+
+
+cardsContainer.innerHTML = cards
+ 
