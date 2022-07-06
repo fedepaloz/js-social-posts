@@ -36,7 +36,7 @@ const socialPosts = [
         likes: 2000
 
 
-    }, 
+    },
     {
         id: 3,
         name: 'Giorgio Savo',
@@ -45,7 +45,7 @@ const socialPosts = [
         likes: 20
 
 
-    }, 
+    },
     {
         id: 4,
         name: 'Luca Murri',
@@ -54,7 +54,7 @@ const socialPosts = [
         likes: 34
 
 
-    }, 
+    },
     {
         id: 5,
         name: 'Marcel Proust',
@@ -76,12 +76,11 @@ const cardsContainer = document.getElementById('container')
 let cards = ''
 
 
-for (let i = 0 ; i < socialPosts.length ; i++)
-{
-   const posts = socialPosts[i]
+for (let i = 0; i < socialPosts.length; i++) {
+    const posts = socialPosts[i]
 
-    cards += 
-    `<div class="post">
+    cards +=
+        `<div class="post">
         <div class="post__header">
           <div class="post-meta">
             <div class="post-meta__icon">
@@ -108,12 +107,37 @@ for (let i = 0 ; i < socialPosts.length ; i++)
                 <span class="like-button__label">${posts.likes} Mi Piace</span>
               </a>
             </div>
-            <div class="likes__counter">Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone</div>
+            <div class="likes__counter">Piace a 0 <b id="like-counter-1" class="js-likes-counter"></b> persone</div>
           </div>
         </div>
       </div>`
 }
 
-
 cardsContainer.innerHTML = cards
- 
+
+
+//quando clicco cambia colore il tasto mi piace e aumentano i mi piace 
+
+//recupero bottone dal dom
+
+const likeButton = document.querySelectorAll('.js-like-button')
+
+const likeCounter = document.getElementById('like-counter-1')
+
+console.log(likeButton)
+
+
+for (let i = 0; i < likeButton.length ; i++)
+
+{
+    likeButton[i].addEventListener('click', function () {
+    
+        likeButton[i].classList.add("like-button--liked")
+    })
+
+    
+
+}
+
+
+
